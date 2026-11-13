@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VibeConnect - منصة التعارف الاحترافية</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Cairo', 'Plus Jakarta Sans', sans-serif; background-color: #0f172a; color: #f8fafc; }
+    .glass { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .vip-glow { box-shadow: 0 0 20px rgba(245, 158, 11, 0.25); border: 1px solid rgba(245, 158, 11, 0.5); }
+    .chat-box::-webkit-scrollbar { width: 4px; }
+    .chat-box::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+  </style>
+</head>
+<body class="pb-24 min-h-screen flex flex-col">
+
+  <!-- الشريط العلوي -->
+  <header class="glass sticky top-0 z-50 px-4 py-3 shadow-lg">
+    <div class="max-w-4xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">💎</span>
+        <h1 class="text-xl font-extrabold bg-gradient-to-r from-rose-400 to-amber-300 bg-clip-text text-transparent">VibeConnect</h1>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <!-- مبدل اللغات -->
+        <select id="lang-switcher" onchange="changeLanguage(this.value)" class="bg-slate-800 text-xs text-white border border-slate-700 rounded-lg px-2 py-1.5 outline-none">
+          <option value="ar">🇸🇦 العربية</option>
+          <option value="en">🇺🇸 English</option>
+          <option value="fr">🇫🇷 Français</option>
+        </select>
+
+        <!-- معلومات العضو المسجل -->
+        <div id="user-header-info" class="hidden flex items-center gap-2">
+          <div class="bg-amber-500/20 border border-amber-500/40 text-amber-300 px-2.5 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+            <span>⭐</span> <span id="header-points">0</span>
+          </div>
+          <button onclick="openVipModal()" class="bg-gradient-to-r from-amber-500 to-yellow-600 text-slate-950 font-extrabold text-xs px-3 py-1.5 rounded-lg shadow hover:opacity-90 transition" data-i18n="btn_vip">
+            ترقية VIP
+          </button>
+          <button onclick="logoutUser()" class="bg-rose-600/20 text-rose-400 hover:bg-rose-600 hover:text-white text-xs px-2.5 py-1.5 rounded-lg transition" data-i18n="btn_logout">
+            خروج
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- مساحة إعلانية علوية (728x90 / 320x50) -->
+  <div class="max-w-4xl w-full mx-auto px-4 mt-3">
+    <div id="ad-slot-top" class="w-full min-h-[60px] bg-slate-800/60 border border-dashed border-slate-700 rounded-xl flex items-center justify-center text-xs text-slate-500 overflow-hidden">
+      <!-- ضع كود إعلان Adsterra العلوي هنا -->
+      <span>AD SPACE (728x90 / 320x50)</span>
+    </div>
+  </div>
+
+  <main class="max-w-4xl w-full mx-auto px-4 mt-4 flex-1">
+
+    <!-- 1. واجهة التسجيل والدخول -->
+    <section id="auth-section" class="glass p-6 rounded-2xl max-w-md mx-auto mt-6 shadow-2xl">
+      <div class="text-center mb-6">
+        <h2 class="text-2xl font-bold text-white mb-1" data-i18n="welcome_title">مرحباً بك في مجتمع النخبة</h2>
+        <p class="text-xs text-slate-400" data-i18n="welcome_sub">تواصل، اربح النقاط، واستمتع بمزايا العضوية المحترفة</p>
+      </div>
+
+      <div class="flex gap-2 mb-5 bg-slate-900/80 p-1 rounded-xl">
+        <button id="tab-login" onclick="switchAuthTab('
